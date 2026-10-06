@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biryani House | Login</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#070d13;
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:70px;
+    background:#0b121a;
+    border-bottom:1px solid #273440;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+}
+
+.logo{
+    color:#ffc107;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#ffc107;
+}
+
+/* LOGIN AREA */
+
+.login-section{
+    min-height:calc(100vh - 70px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px 20px;
+}
+
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:#0b121a;
+    border:1px solid #273440;
+    border-radius:12px;
+    padding:35px;
+    box-shadow:0 0 30px rgba(255,193,7,0.08);
+}
+
+.login-title{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.login-title .icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.login-title h1{
+    color:#ffc107;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.login-title p{
+    color:#999;
+    font-size:14px;
+}
+
+/* FORM */
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    color:#ddd;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.form-group input{
+    width:100%;
+    padding:13px;
+    background:#070d13;
+    color:#fff;
+    border:1px solid #273440;
+    border-radius:6px;
+    outline:none;
+    font-size:14px;
+}
+
+.form-group input:focus{
+    border-color:#ffc107;
+    box-shadow:0 0 8px rgba(255,193,7,0.15);
+}
+
+/* REMEMBER */
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+    font-size:13px;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#aaa;
+}
+
+.remember input{
+    accent-color:#ffc107;
+}
+
+.forgot{
+    color:#ffc107;
+    text-decoration:none;
+}
+
+.forgot:hover{
+    text-decoration:underline;
+}
+
+/* BUTTON */
+
+.login-btn{
+    width:100%;
+    padding:13px;
+    background:#ffc107;
+    color:#000;
+    border:none;
+    border-radius:6px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#ffca28;
+}
+
+/* REGISTER */
+
+.register-text{
+    text-align:center;
+    color:#999;
+    font-size:14px;
+    margin-top:22px;
+}
+
+.register-text a{
+    color:#ffc107;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.register-text a:hover{
+    text-decoration:underline;
+}
+
+/* BACK */
+
+.back-menu{
+    display:block;
+    text-align:center;
+    margin-top:18px;
+    color:#aaa;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.back-menu:hover{
+    color:#ffc107;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:11px;
+    }
+
+    .login-box{
+        padding:25px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🔥 Biryani House
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="main.html">Menu</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html">🛒 Cart</a>
+
+        <a href="login.html">Login</a>
+
+    </div>
+
+</nav>
+
+
+<!-- LOGIN -->
+
+<section class="login-section">
+
+    <div class="login-box">
+
+        <div class="login-title">
+
+            <div class="icon">👤</div>
+
+            <h1>Welcome Back</h1>
+
+            <p>Login to your Biryani House account</p>
+
+        </div>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="options">
+
+                <label class="remember">
+
+                    <input type="checkbox">
+
+                    Remember me
+
+                </label>
+
+                <a href="#" class="forgot">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn">
+
+                Login
+
+            </button>
+
+        </form>
+
+
+        <div class="register-text">
+
+            Don't have an account?
+
+            <a href="register.html">
+                Register
+            </a>
+
+        </div>
+
+
+        <a href="main.html" class="back-menu">
+            ← Back to Menu
+        </a>
+
+    </div>
+
+</section>
+
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if(email && password){
+
+        alert("Login successful!");
+
+        window.location.href = "profile.html";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
