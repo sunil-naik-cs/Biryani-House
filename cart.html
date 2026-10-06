@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biryani House | Cart</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070d13;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* NAVBAR */
+.navbar{
+    height:70px;
+    background:#0b121a;
+    border-bottom:1px solid #273440;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+}
+
+.logo{
+    color:#ffc107;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#ffc107;
+}
+
+.cart-link{
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-12px;
+    right:-15px;
+    background:#ffc107;
+    color:#000;
+    width:19px;
+    height:19px;
+    border-radius:50%;
+    font-size:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* PAGE */
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:50px auto;
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.page-title h1{
+    color:#ffc107;
+    font-size:38px;
+    margin-bottom:8px;
+}
+
+.page-title p{
+    color:#999;
+}
+
+/* CART */
+.cart-layout{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+.cart-items{
+    background:#0b121a;
+    border:1px solid #273440;
+    border-radius:10px;
+    padding:20px;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px 0;
+    border-bottom:1px solid #273440;
+}
+
+.cart-item:last-child{
+    border-bottom:none;
+}
+
+.item-image{
+    width:90px;
+    height:75px;
+    object-fit:cover;
+    border-radius:7px;
+}
+
+.item-info{
+    flex:1;
+}
+
+.item-info h3{
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.item-info p{
+    color:#ffc107;
+    font-weight:bold;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.quantity button{
+    width:30px;
+    height:30px;
+    border:1px solid #ffc107;
+    background:transparent;
+    color:#ffc107;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.quantity span{
+    min-width:20px;
+    text-align:center;
+}
+
+.item-total{
+    width:80px;
+    text-align:right;
+    color:#ffc107;
+    font-weight:bold;
+}
+
+.remove-btn{
+    border:none;
+    background:none;
+    color:#ff5252;
+    cursor:pointer;
+    font-size:13px;
+}
+
+/* SUMMARY */
+.summary{
+    background:#0b121a;
+    border:1px solid #273440;
+    border-radius:10px;
+    padding:25px;
+    height:max-content;
+}
+
+.summary h2{
+    color:#ffc107;
+    margin-bottom:20px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    color:#ccc;
+}
+
+.summary-total{
+    border-top:1px solid #273440;
+    margin-top:10px;
+    padding-top:18px;
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.summary-total span:last-child{
+    color:#ffc107;
+}
+
+.checkout-btn{
+    width:100%;
+    margin-top:22px;
+    padding:13px;
+    background:#ffc107;
+    color:#000;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.checkout-btn:hover{
+    background:#ffca28;
+}
+
+.continue-btn{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    color:#ffc107;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* EMPTY */
+.empty{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.empty h2{
+    margin-bottom:10px;
+}
+
+.empty p{
+    color:#999;
+    margin-bottom:20px;
+}
+
+.menu-btn{
+    display:inline-block;
+    padding:12px 22px;
+    background:#ffc107;
+    color:#000;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+/* MOBILE */
+@media(max-width:750px){
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:11px;
+    }
+
+    .cart-layout{
+        grid-template-columns:1fr;
+    }
+
+    .cart-item{
+        flex-wrap:wrap;
+    }
+
+    .item-info{
+        min-width:150px;
+    }
+
+    .item-total{
+        margin-left:auto;
+    }
+
+    .page-title h1{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">🔥 Biryani House</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="main.html">Menu</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html" class="cart-link">
+            🛒 Cart
+            <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+        <a href="login.html">Login</a>
+    </div>
+
+</nav>
+
+
+<!-- PAGE -->
+<div class="container">
+
+    <div class="page-title">
+        <h1>Your Cart</h1>
+        <p>Check your selected delicious items</p>
+    </div>
+
+    <div id="cartContent"></div>
+
+</div>
+
+
+<script>
+
+function getCart(){
+    return JSON.parse(localStorage.getItem("biryaniCart")) || [];
+}
+
+function saveCart(cart){
+    localStorage.setItem("biryaniCart", JSON.stringify(cart));
+}
+
+
+/* UPDATE CART COUNT */
+function updateCartCount(){
+
+    const cart = getCart();
+
+    let count = 0;
+
+    cart.forEach(item => {
+        count += Number(item.quantity) || 1;
+    });
+
+    document.getElementById("cartCount").textContent = count;
+}
+
+
+/* DISPLAY CART */
+function displayCart(){
+
+    const cart = getCart();
+
+    const cartContent = document.getElementById("cartContent");
+
+    if(cart.length === 0){
+
+        cartContent.innerHTML = `
+            <div class="cart-items empty">
+
+                <h2>Your Cart is Empty 🛒</h2>
+
+                <p>Add some delicious food from our menu.</p>
+
+                <a href="main.html" class="menu-btn">
+                    Go to Menu
+                </a>
+
+            </div>
+        `;
+
+        return;
+    }
+
+
+    let subtotal = 0;
+
+    let itemsHTML = "";
+
+
+    cart.forEach((item,index) => {
+
+        const quantity = Number(item.quantity) || 1;
+
+        const total = Number(item.price) * quantity;
+
+        subtotal += total;
+
+
+        let image = "";
+
+        if(item.name === "Chicken Biryani"){
+            image = "https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=300&q=80";
+        }
+
+        else if(item.name === "Mutton Biryani"){
+            image = "https://images.unsplash.com/photo-1701579231374-45f2f2e8e0d4?auto=format&fit=crop&w=300&q=80";
+        }
+
+        else if(item.name === "Egg Biryani"){
+            image = "https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?auto=format&fit=crop&w=300&q=80";
+        }
+
+        else if(item.name === "Veg Biryani"){
+            image = "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=300&q=80";
+        }
+
+        else if(item.name === "Chicken 65"){
+            image = "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=300&q=80";
+        }
+
+        else{
+            image = "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80";
+        }
+
+
+        itemsHTML += `
+
+            <div class="cart-item">
+
+                <img src="${image}" class="item-image">
+
+                <div class="item-info">
+
+                    <h3>${item.name}</h3>
+
+                    <p>₹${item.price}</p>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <button onclick="changeQuantity(${index},-1)">
+                        -
+                    </button>
+
+                    <span>${quantity}</span>
+
+                    <button onclick="changeQuantity(${index},1)">
+                        +
+                    </button>
+
+                </div>
+
+
+                <div class="item-total">
+                    ₹${total}
+                </div>
+
+
+                <button
+                    class="remove-btn"
+                    onclick="removeItem(${index})">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        `;
+    });
+
+
+    cartContent.innerHTML = `
+
+        <div class="cart-layout">
+
+            <div class="cart-items">
+
+                ${itemsHTML}
+
+            </div>
+
+
+            <div class="summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>₹${subtotal}</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span>₹40</span>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span>₹${subtotal + 40}</span>
+                </div>
+
+                <button
+                    class="checkout-btn"
+                    onclick="checkout()">
+
+                    Proceed to Checkout
+
+                </button>
+
+                <a href="main.html" class="continue-btn">
+                    ← Continue Shopping
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+
+/* CHANGE QUANTITY */
+function changeQuantity(index,change){
+
+    const cart = getCart();
+
+    cart[index].quantity =
+        (Number(cart[index].quantity) || 1) + change;
+
+
+    if(cart[index].quantity <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    saveCart(cart);
+
+    displayCart();
+
+    updateCartCount();
+}
+
+
+/* REMOVE ITEM */
+function removeItem(index){
+
+    const cart = getCart();
+
+    cart.splice(index,1);
+
+    saveCart(cart);
+
+    displayCart();
+
+    updateCartCount();
+}
+
+
+/* CHECKOUT */
+function checkout(){
+
+    const cart = getCart();
+
+    if(cart.length === 0){
+
+        alert("Your cart is empty!");
+
+        return;
+    }
+
+    alert("Checkout page will be connected next.");
+
+}
+
+
+/* LOAD */
+displayCart();
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>
