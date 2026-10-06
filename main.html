@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biryani House | Menu</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#070d13;
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:64px;
+    background:#0b121a;
+    border-bottom:1px solid #273440;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ffc107;
+}
+
+.logo-icon{
+    font-size:23px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#c9cdd1;
+    text-decoration:none;
+    font-size:12px;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#ffc107;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:17px;
+}
+
+.nav-icon{
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-8px;
+    right:-9px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:#ffc107;
+    color:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:9px;
+    font-weight:bold;
+}
+
+.login-btn{
+    color:#fff;
+    text-decoration:none;
+    border:1px solid #7c858d;
+    padding:7px 13px;
+    border-radius:5px;
+    font-size:11px;
+}
+
+.login-btn:hover{
+    color:#ffc107;
+    border-color:#ffc107;
+}
+
+
+/* PAGE HEADER */
+
+.page-header{
+    height:150px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.75)
+    ),
+    url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=85");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.page-header h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:#d2d2d2;
+    font-size:12px;
+}
+
+
+/* MAIN AREA */
+
+.menu-area{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:20px;
+    padding:25px;
+}
+
+
+/* CATEGORY */
+
+.categories{
+    background:#0b141d;
+    border:1px solid #273440;
+    border-radius:7px;
+    padding:12px;
+    height:max-content;
+}
+
+.categories h3{
+    font-size:13px;
+    color:#ffc107;
+    margin-bottom:10px;
+}
+
+.category-btn{
+    width:100%;
+    display:block;
+    background:transparent;
+    border:0;
+    color:#cbd0d4;
+    text-align:left;
+    padding:10px;
+    border-radius:5px;
+    margin-bottom:4px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.category-btn:hover,
+.category-btn.active{
+    background:#ffc107;
+    color:#111;
+}
+
+
+/* PRODUCT AREA */
+
+.product-area{
+    min-width:0;
+}
+
+.product-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.product-top h2{
+    font-size:18px;
+}
+
+.product-top span{
+    color:#8e98a2;
+    font-size:11px;
+}
+
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.card{
+    background:#0c151e;
+    border:1px solid #273440;
+    border-radius:7px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#ffc107;
+}
+
+.card-img{
+    width:100%;
+    height:145px;
+    object-fit:cover;
+    display:block;
+}
+
+.card-body{
+    padding:11px;
+}
+
+.card h3{
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.card p{
+    color:#8e98a2;
+    font-size:10px;
+    line-height:1.4;
+    height:28px;
+    margin-bottom:7px;
+}
+
+.price{
+    color:#ffc107;
+    font-weight:bold;
+    font-size:12px;
+    margin-bottom:9px;
+}
+
+.card-buttons{
+    display:flex;
+    gap:6px;
+}
+
+.view-btn{
+    flex:1;
+    padding:8px 4px;
+    border:1px solid #555;
+    background:transparent;
+    color:#fff;
+    border-radius:4px;
+    font-size:10px;
+    cursor:pointer;
+    text-decoration:none;
+    text-align:center;
+}
+
+.view-btn:hover{
+    border-color:#ffc107;
+    color:#ffc107;
+}
+
+.add-btn{
+    flex:1;
+    padding:8px 4px;
+    border:0;
+    background:#ffc107;
+    color:#111;
+    border-radius:4px;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.add-btn:hover{
+    background:#ffda55;
+}
+
+
+/* FOOTER */
+
+footer{
+    margin-top:20px;
+    padding:20px;
+    text-align:center;
+    background:#0b121a;
+    border-top:1px solid #273440;
+    color:#7e8892;
+    font-size:11px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .menu-area{
+        grid-template-columns:150px 1fr;
+        padding:15px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:0 14px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .page-header{
+        height:140px;
+    }
+
+    .page-header h1{
+        font-size:24px;
+    }
+
+    .menu-area{
+        display:block;
+        padding:15px;
+    }
+
+    .categories{
+        display:flex;
+        gap:5px;
+        overflow-x:auto;
+        margin-bottom:18px;
+        padding:8px;
+    }
+
+    .categories h3{
+        display:none;
+    }
+
+    .category-btn{
+        width:auto;
+        white-space:nowrap;
+        margin:0;
+        padding:8px 12px;
+    }
+
+    .products{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .card-img{
+        height:105px;
+    }
+
+    .card-body{
+        padding:8px;
+    }
+
+    .card h3{
+        font-size:11px;
+    }
+
+    .card p{
+        font-size:9px;
+    }
+
+    .product-top h2{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <span class="logo-icon">🔥</span>
+        BIRYANI <span>HOUSE</span>
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="main.html" class="active">
+            Menu
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="nav-right">
+
+        <!-- SEARCH -->
+
+        <a href="main.html" class="nav-icon">
+            ⌕
+        </a>
+
+
+        <!-- CART -->
+
+        <a href="cart.html" class="nav-icon">
+
+            🛒
+
+            <span
+                class="cart-count"
+                id="cartCount">
+                0
+            </span>
+
+        </a>
+
+
+        <!-- LOGIN -->
+
+        <a
+            href="login.html"
+            class="login-btn">
+            Login
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- PAGE HEADER -->
+
+<section class="page-header">
+
+    <h1>
+        Our Menu
+    </h1>
+
+    <p>
+        Delicious food, made with love
+    </p>
+
+</section>
+
+
+
+<!-- MENU -->
+
+<section class="menu-area">
+
+
+    <!-- CATEGORIES -->
+
+    <aside class="categories">
+
+        <h3>
+            Categories
+        </h3>
+
+
+        <button
+            class="category-btn active"
+            onclick="filterProducts('all',this)">
+            🍽 All Items
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('biryani',this)">
+            🍚 Biryani
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('starter',this)">
+            🍗 Starters
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('side',this)">
+            🥗 Sides
+        </button>
+
+
+        <button
+            class="category-btn"
+            onclick="filterProducts('drink',this)">
+            🥤 Drinks
+        </button>
+
+    </aside>
+
+
+
+    <!-- PRODUCTS -->
+
+    <main class="product-area">
+
+        <div class="product-top">
+
+            <h2>
+                Popular Dishes
+            </h2>
+
+            <span id="itemCount">
+                6 items
+            </span>
+
+        </div>
+
+
+        <div class="products" id="products">
+
+
+            <!-- 1 CHICKEN -->
+
+            <div
+                class="card"
+                data-category="biryani">
+
+                <img
+                    class="card-img"
+                    src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80"
+                    alt="Chicken Biryani">
+
+                <div class="card-body">
+
+                    <h3>
+                        Chicken Biryani
+                    </h3>
+
+                    <p>
+                        Aromatic basmati rice with tender chicken.
+                    </p>
+
+                    <div class="price">
+                        ₹180
+                    </div>
+
+                    <div class="card-buttons">
+
+                        <a
+                            href="product.html?id=1"
+                            class="view-btn">
+                            View
+                        </a>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(1,'Chicken Biryani',180)">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 2 MUTTON -->
+
+            <div
+                class="card"
+                data-category="biryani">
+
+                <img
+                    class="card-img"
+                    src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80"
+                    alt="Mutton Biryani">
+
+                <div class="card-body">
+
+                    <h3>
+                        Mutton Biryani
+                    </h3>
+
+                    <p>
+                        Rich and flavorful mutton biryani.
+                    </p>
+
+                    <div class="price">
+                        ₹240
+                    </div>
+
+                    <div class="card-buttons">
+
+                        <a
+                            href="product.html?id=2"
+                            class="view-btn">
+                            View
+                        </a>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(2,'Mutton Biryani',240)">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 3 EGG -->
+
+            <div
+                class="card"
+                data-category="biryani">
+
+                <img
+                    class="card-img"
+                    src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+                    alt="Egg Biryani">
+
+                <div class="card-body">
+
+                    <h3>
+                        Egg Biryani
+                    </h3>
+
+                    <p>
+                        Fragrant rice served with delicious egg.
+                    </p>
+
+                    <div class="price">
+                        ₹130
+                    </div>
+
+                    <div class="card-buttons">
+
+                        <a
+                            href="product.html?id=3"
+                            class="view-btn">
+                            View
+                        </a>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(3,'Egg Biryani',130)">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 4 VEG -->
+
+            <div
+                class="card"
+                data-category="biryani">
+
+                <img
+                    class="card-img"
+                    src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=80"
+                    alt="Veg Biryani">
+
+                <div class="card-body">
+
+                    <h3>
+                        Veg Biryani
+                    </h3>
+
+                    <p>
+                        Fresh vegetables with aromatic basmati rice.
+                    </p>
+
+                    <div class="price">
+                        ₹120
+                    </div>
+
+                    <div class="card-buttons">
+
+                        <a
+                            href="product.html?id=4"
+                            class="view-btn">
+                            View
+                        </a>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(4,'Veg Biryani',120)">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 5 CHICKEN 65 -->
+
+            <div
+                class="card"
+                data-category="starter">
+
+                <img
+                    class="card-img"
+                    src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=80"
+                    alt="Chicken 65">
+
+                <div class="card-body">
+
+                    <h3>
+                        Chicken 65
+                    </h3>
+
+                    <p>
+                        Crispy spicy chicken starter.
+                    </p>
+
+                    <div class="price">
+                        ₹120
+                    </div>
+
+                    <div class="card-buttons">
+
+                        <a
+                            href="product.html?id=5"
+                            class="view-btn">
+                            View
+                        </a>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(5,'Chicken 65',120)">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 6 SEEKH KEBAB -->
+
+            <div
+                class="card"
+                data-category="starter">
+
+                <img
+                    class="card-img"
+                    src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80"
+                    alt="Seekh Kebab">
+
+                <div class="card-body">
+
+                    <h3>
+                        Seekh Kebab
+                    </h3>
+
+                    <p>
+                        Juicy grilled kebab with spices.
+                    </p>
+
+                    <div class="price">
+                        ₹150
+                    </div>
+
+                    <div class="card-buttons">
+
+                        <a
+                            href="product.html?id=6"
+                            class="view-btn">
+                            View
+                        </a>
+
+                        <button
+                            class="add-btn"
+                            onclick="addToCart(6,'Seekh Kebab',150)">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Biryani House. All Rights Reserved.
+</footer>
+
+
+
+<script>
+
+/* GET CART */
+
+function getCart(){
+
+    let cart =
+        localStorage.getItem("biryaniCart");
+
+    if(cart){
+        return JSON.parse(cart);
+    }
+
+    return [];
+}
+
+
+/* ADD TO CART */
+
+function addToCart(id,name,price){
+
+    let cart = getCart();
+
+    let existing =
+        cart.find(item => item.id === id);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            id:id,
+            name:name,
+            price:price,
+            quantity:1
+        });
+
+    }
+
+    localStorage.setItem(
+        "biryaniCart",
+        JSON.stringify(cart)
+    );
+
+    updateCartCount();
+
+    alert(name + " added to cart");
+}
+
+
+/* UPDATE CART */
+
+function updateCartCount(){
+
+    let cart = getCart();
+
+    let count = 0;
+
+    cart.forEach(item => {
+        count += item.quantity;
+    });
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = count;
+}
+
+
+/* FILTER PRODUCTS */
+
+function filterProducts(category,button){
+
+    let cards =
+        document.querySelectorAll(".card");
+
+    let visible = 0;
+
+    cards.forEach(card => {
+
+        if(
+            category === "all" ||
+            card.dataset.category === category
+        ){
+
+            card.style.display = "block";
+
+            visible++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    document.querySelectorAll(
+        ".category-btn"
+    ).forEach(btn => {
+
+        btn.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+
+    document.getElementById(
+        "itemCount"
+    ).textContent =
+        visible + " items";
+}
+
+
+/* START */
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>
