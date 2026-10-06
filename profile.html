@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biryani House | Profile</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#070d13;
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar{
+    height:70px;
+    background:#0b121a;
+    border-bottom:1px solid #273440;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+}
+
+.logo{
+    color:#ffc107;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-links a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#ffc107;
+}
+
+
+/* PROFILE */
+
+.profile-section{
+    width:90%;
+    max-width:900px;
+    margin:50px auto;
+}
+
+.profile-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.profile-title h1{
+    color:#ffc107;
+    font-size:36px;
+    margin-bottom:8px;
+}
+
+.profile-title p{
+    color:#999;
+}
+
+
+/* PROFILE CARD */
+
+.profile-card{
+    background:#0b121a;
+    border:1px solid #273440;
+    border-radius:12px;
+    padding:30px;
+}
+
+
+/* TOP */
+
+.profile-top{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    padding-bottom:25px;
+    border-bottom:1px solid #273440;
+}
+
+.profile-image{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#ffc107;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+}
+
+.profile-name h2{
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.profile-name p{
+    color:#999;
+}
+
+
+/* DETAILS */
+
+.details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:25px;
+}
+
+.detail-box{
+    background:#070d13;
+    border:1px solid #273440;
+    border-radius:7px;
+    padding:17px;
+}
+
+.detail-box span{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.detail-box strong{
+    color:#fff;
+    font-size:15px;
+    word-break:break-word;
+}
+
+
+/* BUTTONS */
+
+.profile-buttons{
+    display:flex;
+    gap:12px;
+    margin-top:25px;
+}
+
+.btn{
+    flex:1;
+    padding:13px;
+    border-radius:6px;
+    text-align:center;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.orders-btn{
+    background:#ffc107;
+    color:#000;
+}
+
+.orders-btn:hover{
+    background:#ffca28;
+}
+
+.logout-btn{
+    background:transparent;
+    border:1px solid #ff5252;
+    color:#ff5252;
+}
+
+.logout-btn:hover{
+    background:#ff5252;
+    color:#fff;
+}
+
+
+/* NOT LOGGED */
+
+.not-logged{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.not-logged h2{
+    margin-bottom:10px;
+}
+
+.not-logged p{
+    color:#999;
+    margin-bottom:25px;
+}
+
+.login-btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#ffc107;
+    color:#000;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .navbar{
+        padding:0 4%;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:11px;
+    }
+
+    .profile-section{
+        margin:30px auto;
+    }
+
+    .profile-title h1{
+        font-size:30px;
+    }
+
+    .profile-card{
+        padding:20px;
+    }
+
+    .profile-top{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .details{
+        grid-template-columns:1fr;
+    }
+
+    .profile-buttons{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🔥 Biryani House
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="main.html">Menu</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html">🛒 Cart</a>
+
+        <a href="profile.html">Profile</a>
+
+    </div>
+
+</nav>
+
+
+<!-- PROFILE -->
+
+<section class="profile-section">
+
+    <div class="profile-title">
+
+        <h1>My Profile</h1>
+
+        <p>Manage your Biryani House account</p>
+
+    </div>
+
+
+    <div id="profileContent"></div>
+
+</section>
+
+
+<script>
+
+/* GET USER */
+
+const user =
+    JSON.parse(localStorage.getItem("biryaniUser"));
+
+
+/* PROFILE CONTENT */
+
+const profileContent =
+    document.getElementById("profileContent");
+
+
+if(!user){
+
+    profileContent.innerHTML = `
+
+        <div class="profile-card not-logged">
+
+            <h2>You are not logged in</h2>
+
+            <p>
+                Please login to view your profile.
+            </p>
+
+            <a
+                href="login.html"
+                class="login-btn">
+
+                Login
+
+            </a>
+
+        </div>
+
+    `;
+
+}
+else{
+
+    profileContent.innerHTML = `
+
+        <div class="profile-card">
+
+            <div class="profile-top">
+
+                <div class="profile-image">
+                    👤
+                </div>
+
+                <div class="profile-name">
+
+                    <h2>${user.name}</h2>
+
+                    <p>Biryani House Customer</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="details">
+
+                <div class="detail-box">
+
+                    <span>Full Name</span>
+
+                    <strong>${user.name}</strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <span>Email Address</span>
+
+                    <strong>${user.email}</strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <span>Phone Number</span>
+
+                    <strong>${user.phone}</strong>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <span>Account</span>
+
+                    <strong>Active</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-buttons">
+
+                <a
+                    href="orders.html"
+                    class="btn orders-btn">
+
+                    My Orders
+
+                </a>
+
+
+                <button
+                    class="btn logout-btn"
+                    onclick="logout()">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    localStorage.removeItem("biryaniUser");
+
+    alert("Logged out successfully!");
+
+    window.location.href = "login.html";
+
+}
+
+</script>
+
+</body>
+</html>
